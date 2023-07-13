@@ -1,0 +1,18 @@
+syntax = "proto3";
+package opendao.od;
+
+option go_package = "opendao/x/od/types";
+import "gogoproto/gogo.proto"; 
+import "cosmos/base/v1beta1/coin.proto"; 
+
+message Proposal {
+  uint64 id = 1;
+  string title = 2; 
+  string description = 3; 
+  repeated cosmos.base.v1beta1.Coin coins = 4 [(gogoproto.nullable) = false]; 
+  int64 expiry = 5; 
+  string applicant = 6; 
+  string beneficiary = 7; 
+  repeated string agreed = 8; 
+  
+}

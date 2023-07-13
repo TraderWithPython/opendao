@@ -1,0 +1,48 @@
+version: 1
+accounts:
+- name: alice
+  coins: ["200000000open"]
+- name: m1
+  coins: ["100open"]
+  # address: opendao1t79pyys2afsr9z7e0td6sc30txz7psacjxfgyy
+  mnemonic: island attitude better shift climb viable zero cheese bless cherry mad stand
+    moral detect rural stamp proof virtual hour toast cash web first naive
+- name: m2
+  coins: ["200open"]
+  # address: opendao1cvmajkjw4x5rjpag28eex27c9m396vheekt9h0
+  mnemonic: lottery pitch federal claw pudding negative access night girl alley about clean
+    crawl skirt task zero cage nature report pool fuel ritual crack detect
+- name: m3
+  coins: ["300open"]
+  # address: opendao1e6g36xjk6urjk79t35q64tuxehsnhuvmht5fdl
+  mnemonic: crash sun core scrub must coin census squeeze trust explain sausage tribe leg
+    clarify hybrid mercy boss garden palace name slot empty genius barrel
+- name: a1
+  # address: opendao17xlgmrel0fs4n2yf85w7kft68wyvk0ucd5g2gs
+  mnemonic: monitor link page sport explain ankle require enter clinic brother timber good
+    canoe then jazz hub tortoise canoe echo spy clump tiny inform panel
+  coins: ["1open"]
+- name: b1
+  address: opendao16g56wtvcvr5tc49l7gfc2frqxukeew66sled64
+validators:
+- name: alice
+  bonded: "100000000open"
+
+genesis:
+  chain_id: opendao
+  app_state:
+    staking:
+        params:
+          bond_denom: "open"
+    crisis:
+      constant_fee:
+        denom: "open"
+        amount: "100"
+    mint:
+      params:
+        mint_denom: "open"
+    gov:
+      deposit_params:
+        min_deposit:
+          - denom: "open"
+            amount: "1"

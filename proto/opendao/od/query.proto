@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package opendao.od;
+
+import "gogoproto/gogo.proto";
+import "google/api/annotations.proto";
+import "cosmos/base/query/v1beta1/pagination.proto";
+import "opendao/od/params.proto";
+import "opendao/od/proposal.proto";
+
+option go_package = "opendao/x/od/types";
+
+// Query defines the gRPC querier service.
+service Query {
+  
+  // Parameters queries the parameters of the module.
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
+    option (google.api.http).get = "/opendao/od/params";
+  
+  }
+  
+  // Queries a list of Proposal items.
+  rpc Proposal    (QueryGetProposalRequest) returns (QueryGetProposalResponse) {
+    option (google.api.http).get = "/opendao/od/proposal/{id}";
+  
+  }
+  rpc ProposalAll (QueryAllProposalRequest) returns (QueryAllProposalResponse) {
+    option (google.api.http).get = "/opendao/od/proposal";
+  
+  }
+}
+// QueryParamsRequest is request type for the Query/Params RPC method.
+message QueryParamsRequest {}
+
+// QueryParamsResponse is response type for the Query/Params RPC method.
+message QueryParamsResponse {
+  
+  // params holds all the parameters of this module.
+  Params params = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryGetProposalRequest {
+  uint64 id = 1;
+}
+
+message QueryGetProposalResponse {
+  Proposal Proposal = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllProposalRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllProposalResponse {
+  repeated Proposal                               Proposal   = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
